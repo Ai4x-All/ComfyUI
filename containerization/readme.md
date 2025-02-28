@@ -131,10 +131,28 @@ docker push devserver:5000/comfyui:latest
 docker run -d \
 --gpus all \
 --restart unless-stopped \
+--name comfyui_9181 \
+-p 9181:8000 \
+-v /d/comfyui_models:/app/models \
+-v /etc/apps/comfyui-docker/output_9181:/app/output \
+devserver:5000/comfyui:latest
+
+docker run -d \
+--gpus all \
+--restart unless-stopped \
+--name comfyui_9182 \
+-p 9182:8000 \
+-v /d/comfyui_models:/app/models \
+-v /etc/apps/comfyui-docker/output_9182:/app/output \
+devserver:5000/comfyui:latest
+
+docker run -d \
+--gpus all \
+--restart unless-stopped \
 --name comfyui_9183 \
 -p 9183:8000 \
 -v /d/comfyui_models:/app/models \
 -v /etc/apps/comfyui-docker/output_9183:/app/output \
-devserver:5000/comfyui
+devserver:5000/comfyui:latest
 
 ```
